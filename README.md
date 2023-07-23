@@ -1,1 +1,1 @@
-Currently creating the greatest calculator every created 
+Currently creating the greatest calculator ever created 
