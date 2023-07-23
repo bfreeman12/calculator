@@ -12,6 +12,10 @@
 }
 
 .calculator-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 80%;
@@ -44,4 +48,5 @@ button {
   height: 2rem;
   width: 1fr;
   border-radius: 5px;
+  user-select: none;
 }
