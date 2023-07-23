@@ -9,6 +9,7 @@
   border-style: solid;
   border-radius: 45px;
   contain: content;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.384);
 }
 
 .calculator-screen {
