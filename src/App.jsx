@@ -6,14 +6,25 @@ function App() {
 
   const parseData = (data) => {
     const breakPoint = /[+\/*-]/g;
+    const splitData = data.split(breakPoint).filter((val) => val !== "");
 
-    const splitData = data.split(breakPoint);
+    if (splitData.length === 0) {
+      return "Invalid data format";
+    }
+
+    let num1 = parseFloat(splitData[0]);
+    let num2 = parseFloat(splitData[1]);
+
+    if (isNaN(num1) || isNaN(num2)) {
+      return "Invalid data format";
+    }
+
+    if (data.startsWith("-") && splitData.length === 1) {
+      return -num1;
+    }
+
     const splitOperator = data.match(breakPoint);
-
     if (splitOperator && splitOperator.length > 0) {
-      const num1 = parseFloat(splitData[0]);
-      const num2 = parseFloat(splitData[1]);
-
       switch (splitOperator[0]) {
         case "+":
           return num1 + num2;
@@ -31,7 +42,7 @@ function App() {
           return "Invalid operator";
       }
     } else {
-      return "Invalid data format";
+      return num1;
     }
   };
 
@@ -58,6 +69,14 @@ function App() {
       setClickedData((prevData) => prevData.slice(0, lastOperatorIndex + 1));
     } else {
       setClickedData("");
+    }
+  };
+
+  const makeNegative = () => {
+    if (clickedData.startsWith("-")) {
+      setClickedData((prevData) => prevData.replace("-", ""));
+    } else if (clickedData !== "0" && clickedData !== "") {
+      setClickedData((prevData) => "-" + prevData);
     }
   };
 
@@ -120,7 +139,7 @@ function App() {
           <button className="btn" onClick={() => handleClick("+")}>
             +
           </button>
-          <button className="btn" onClick={clearAll}>
+          <button className="btn" onClick={makeNegative}>
             +/-
           </button>
           <button className="btn" onClick={() => handleClick("0")}>
