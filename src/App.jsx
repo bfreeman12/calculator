@@ -11,6 +11,7 @@ function App() {
           <button>DEL</button>
           <button>/</button>
         </div>
+
         <div className="calculator-numbers">
           <button>7</button>
           <button>8</button>
